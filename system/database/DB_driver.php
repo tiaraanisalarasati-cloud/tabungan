@@ -131,6 +131,8 @@ abstract class CI_DB_driver {
 	 */
 	public $encrypt			= FALSE;
 
+	public $failover		= array();
+
 	/**
 	 * Swap Prefix
 	 *
