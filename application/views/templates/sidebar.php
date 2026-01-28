@@ -11,6 +11,10 @@
             <ul class="list-unstyled components">
                 <?php
                 $current_controller = $this->router->class;
+
+				$current_method = $this->router->method;
+				$laporan_active = ($current_controller == 'laporan') OR ($current_controller == 'nasabah' && $current_method == 'detail');
+				$nasabah_active = ($current_controller == 'nasabah' && $current_method != 'detail');
                 ?>
                 <li>
                     <a href="<?php echo site_url('dashboard'); ?>" <?php echo ($current_controller == 'dashboard') ? 'class="active"' : ''; ?>>
@@ -19,7 +23,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('nasabah'); ?>" <?php echo ($current_controller == 'nasabah') ? 'class="active"' : ''; ?>>
+                    <a href="<?php echo site_url('nasabah'); ?>" <?php echo ($nasabah_active) ? 'class="active"' : ''; ?>>
                         <i class="fas fa-users"></i>
                         <span>Data Nasabah</span>
                     </a>
@@ -31,7 +35,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<?php echo site_url('laporan'); ?>" <?php echo ($current_controller == 'laporan') ? 'class="active"' : ''; ?>>
+                    <a href="<?php echo site_url('laporan'); ?>" <?php echo ($laporan_active) ? 'class="active"' : ''; ?>>
                         <i class="fas fa-file-alt"></i>
                         <span>Laporan</span>
                     </a>
