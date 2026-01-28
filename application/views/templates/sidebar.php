@@ -9,38 +9,29 @@
             </div>
 
             <ul class="list-unstyled components">
+                <?php
+                $current_controller = $this->router->class;
+                ?>
                 <li>
-                    <a href="<?php echo site_url('dashboard'); ?>" <?php echo (strpos(current_url(), 'dashboard') !== false) ? 'class="active"' : ''; ?>>
+                    <a href="<?php echo site_url('dashboard'); ?>" <?php echo ($current_controller == 'dashboard') ? 'class="active"' : ''; ?>>
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <?php 
-                    $current_uri = $this->uri->segment(1);
-                    $is_nasabah_page = ($current_uri == 'nasabah');
-                    ?>
-                    <a href="<?php echo site_url('nasabah'); ?>" <?php echo $is_nasabah_page ? 'class="active"' : ''; ?>>
+                    <a href="<?php echo site_url('nasabah'); ?>" <?php echo ($current_controller == 'nasabah') ? 'class="active"' : ''; ?>>
                         <i class="fas fa-users"></i>
                         <span>Data Nasabah</span>
                     </a>
                 </li>
                 <li>
-                    <?php 
-                    $current_uri = $this->uri->segment(1);
-                    $is_transaksi_page = in_array($current_uri, ['transaksi', 'setoran', 'penarikan', 'detail']);
-                    ?>
-                    <a href="<?php echo site_url('transaksi'); ?>" <?php echo $is_transaksi_page ? 'class="active"' : ''; ?>>
+                    <a href="<?php echo site_url('transaksi'); ?>" <?php echo ($current_controller == 'transaksi') ? 'class="active"' : ''; ?>>
                         <i class="fas fa-exchange-alt"></i>
                         <span>Transaksi</span>
                     </a>
                 </li>
                 <li>
-                    <?php 
-                    $current_uri = $this->uri->segment(1);
-                    $is_laporan_page = ($current_uri == 'laporan');
-                    ?>
-                    <a href="<?php echo site_url('laporan'); ?>" <?php echo $is_laporan_page ? 'class="active"' : ''; ?>>
+                    <a href="<?php echo site_url('laporan'); ?>" <?php echo ($current_controller == 'laporan') ? 'class="active"' : ''; ?>>
                         <i class="fas fa-file-alt"></i>
                         <span>Laporan</span>
                     </a>
