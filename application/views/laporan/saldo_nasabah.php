@@ -15,60 +15,143 @@
             <!-- Main Content -->
             <div class="main-content">
 
-                <!-- Statistics Cards -->
-                <div class="row">
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card primary">
-                            <div class="card-body">
-                                <div class="text-uppercase text-primary fw-bold text-xs mb-1">
-                                    Total Nasabah
-                                </div>
-                                <div class="h4 mb-0 fw-bold">
-                                    <?php echo number_format($total_nasabah); ?> Orang
+                <!-- Statistics Cards (sinkron dengan halaman laporan) -->
+                <div class="row g-3 mt-2 mb-3">
+                    <!-- Total Nasabah -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card stat-card-sm primary">
+                            <div class="card-body py-3">
+
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-uppercase text-primary fw-bold text-xs mb-1">
+
+                                            Total Nasabah
+                                        </div>
+                                        <div class="h6 mb-0 fw-bold text-gray-800">
+
+                                            <?php echo number_format($total_nasabah); ?> Orang
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-users stat-icon-sm text-primary"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card success">
-                            <div class="card-body">
-                                <div class="text-uppercase text-success fw-bold text-xs mb-1">
-                                    Total Saldo
-                                </div>
-                                <div class="h4 mb-0 fw-bold">
-                                    Rp <?php echo number_format($total_saldo, 0, ',', '.'); ?>
+                    <!-- Total Saldo -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card stat-card-sm success">
+                            <div class="card-body py-3">
+
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-uppercase text-success fw-bold text-xs mb-1">
+
+                                            Total Saldo
+                                        </div>
+                                        <div class="h6 mb-0 fw-bold text-gray-800">
+                                            Rp <?php echo number_format($total_saldo, 0, ',', '.'); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-wallet stat-icon-sm text-success"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card warning">
-                            <div class="card-body">
-                                <div class="text-uppercase text-warning fw-bold text-xs mb-1">
-                                    Rata-rata Saldo
-                                </div>
-                                <div class="h4 mb-0 fw-bold">
-                                    Rp <?php echo number_format($rata_rata_saldo, 0, ',', '.'); ?>
+                    <!-- Rata-rata Saldo -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card stat-card-sm warning">
+                            <div class="card-body py-3">
+
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-uppercase text-warning fw-bold text-xs mb-1">
+
+                                            Rata-rata Saldo
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold text-gray-800">
+                                            Rp <?php echo number_format($rata_rata_saldo, 0, ',', '.'); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-chart-line stat-icon-sm text-warning"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6 mb-4">
-                        <div class="card stat-card info">
-                            <div class="card-body">
-                                <div class="text-uppercase text-info fw-bold text-xs mb-1">
-                                    Saldo Tertinggi
-                                </div>
-                                <div class="h4 mb-0 fw-bold">
-                                    Rp <?php echo number_format($saldo_tertinggi, 0, ',', '.'); ?>
+                    <!-- Saldo Tertinggi -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card stat-card-sm info">
+                            <div class="card-body py-3">
+
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <div class="text-uppercase text-info fw-bold text-xs mb-1">
+
+                                            Saldo Tertinggi
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold text-gray-800">
+                                            Rp <?php echo number_format($saldo_tertinggi, 0, ',', '.'); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-arrow-up stat-icon-sm text-info"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <style>
+                    /* Stat Card Small khusus halaman laporan saldo nasabah */
+                    .stat-card-sm {
+                        height: 100%;
+                        border-left: 4px solid;
+                        transition: all 0.2s ease;
+                        margin-bottom: 0;
+                        border-radius: 0.5rem;
+                    }
+
+                    .stat-card-sm:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+                    }
+
+                    .stat-card-sm.primary {
+                        border-left-color: #3B82F6;
+                    }
+
+                    .stat-card-sm.success {
+                        border-left-color: #10B981;
+                    }
+
+                    .stat-card-sm.info {
+                        border-left-color: #06B6D4;
+                    }
+
+                    .stat-card-sm.warning {
+                        border-left-color: #F59E0B;
+                    }
+
+                    .stat-icon-sm {
+                        font-size: 1.5rem;
+                        opacity: 0.8;
+                    }
+
+                    .text-xxs {
+                        font-size: 0.65rem !important;
+                        letter-spacing: 0.5px;
+                    }
+                </style>
 
                 <!-- Filter & Tabel -->
                 <div class="card">
