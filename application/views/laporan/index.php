@@ -166,7 +166,7 @@
                                                 </p>
                                                 <a href="<?php echo base_url('index.php/laporan/saldo_nasabah'); ?>" 
                                                    class="btn btn-primary">
-                                                    <i class="fas fa-eye"></i> Lihat 
+                                                    <i class="fas fa-eye"></i> Lihat Laporan
                                                 </a>
                                             </div>
                                         </div>
