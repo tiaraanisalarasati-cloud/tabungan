@@ -10,36 +10,42 @@
 
             <ul class="list-unstyled components">
                 <?php
+                // Menentukan controller saat ini untuk mengaktifkan menu sidebar
                 $current_controller = $this->router->class;
 
 				$current_method = $this->router->method;
 				$laporan_active = ($current_controller == 'laporan') OR ($current_controller == 'nasabah' && $current_method == 'detail');
 				$nasabah_active = ($current_controller == 'nasabah' && $current_method != 'detail');
                 ?>
+
                 <li>
                     <a href="<?php echo site_url('dashboard'); ?>" <?php echo ($current_controller == 'dashboard') ? 'class="active"' : ''; ?>>
                         <i class="fas fa-tachometer-alt"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
+
                 <li>
                     <a href="<?php echo site_url('nasabah'); ?>" <?php echo ($nasabah_active) ? 'class="active"' : ''; ?>>
                         <i class="fas fa-users"></i>
                         <span>Data Nasabah</span>
                     </a>
                 </li>
+
                 <li>
                     <a href="<?php echo site_url('transaksi'); ?>" <?php echo ($current_controller == 'transaksi') ? 'class="active"' : ''; ?>>
                         <i class="fas fa-exchange-alt"></i>
                         <span>Transaksi</span>
                     </a>
                 </li>
+
                 <li>
                     <a href="<?php echo site_url('laporan'); ?>" <?php echo ($laporan_active) ? 'class="active"' : ''; ?>>
                         <i class="fas fa-file-alt"></i>
                         <span>Laporan</span>
                     </a>
                 </li>
+
                 <li>
                     <a href="<?php echo base_url('pengaturan'); ?>">
                         <i class="fas fa-cog"></i>
