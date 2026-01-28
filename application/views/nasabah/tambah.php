@@ -153,7 +153,7 @@
 
                                     <!-- Buttons -->
                                     <div class="d-flex justify-content-between">
-                                        <a href="<?php echo base_url('nasabah'); ?>" class="btn btn-secondary">
+                                        <a href="<?php echo base_url('index.php/nasabah'); ?>" class="btn btn-secondary">
                                             <i class="fas fa-times"></i> Batal
                                         </a>
                                         <button type="submit" class="btn btn-primary">

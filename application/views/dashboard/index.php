@@ -175,13 +175,13 @@
                                         </a>
                                     </div>
                                     <div class="col-xl-3 col-md-6">
-                                        <a href="<?php echo base_url('transaksi/setoran'); ?>" class="btn btn-success btn-lg w-100 h-100 py-3 d-flex flex-column align-items-center justify-content-center">
+                                        <a href="<?php echo base_url('index.php/transaksi/setoran'); ?>" class="btn btn-success btn-lg w-100 h-100 py-3 d-flex flex-column align-items-center justify-content-center">
                                             <i class="fas fa-arrow-down fa-2x mb-2"></i>
                                             <span>Setoran</span>
                                         </a>
                                     </div>
                                     <div class="col-xl-3 col-md-6">
-                                        <a href="<?php echo base_url('transaksi/penarikan'); ?>" class="btn btn-danger btn-lg w-100 h-100 py-3 d-flex flex-column align-items-center justify-content-center">
+                                        <a href="<?php echo base_url('index.php/transaksi/penarikan'); ?>" class="btn btn-danger btn-lg w-100 h-100 py-3 d-flex flex-column align-items-center justify-content-center">
                                             <i class="fas fa-arrow-up fa-2x mb-2"></i>
                                             <span>Penarikan</span>
                                         </a>

@@ -37,7 +37,7 @@
                             <a href="<?php echo base_url('nasabah/export_excel'); ?>" class="btn btn-success btn-sm me-2">
                                 <i class="fas fa-file-excel"></i> Export Excel
                             </a>
-                            <a href="<?php echo base_url('nasabah/tambah'); ?>" class="btn btn-primary btn-sm">
+                            <a href="<?php echo base_url('index.php/nasabah/tambah'); ?>" class="btn btn-primary btn-sm">
                                 <i class="fas fa-plus"></i> Tambah Nasabah
                             </a>
                         </div>
