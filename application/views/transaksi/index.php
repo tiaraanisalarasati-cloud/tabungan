@@ -170,10 +170,10 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h6 class="m-0 fw-bold"><i class="fas fa-filter"></i> Filter & Daftar Transaksi</h6>
                         <div>
-                            <a href="<?php echo base_url('transaksi/setoran'); ?>" class="btn btn-success btn-sm me-2">
+                            <a href="<?php echo base_url('index.php/transaksi/setoran'); ?>" class="btn btn-success btn-sm me-2">
                                 <i class="fas fa-arrow-down"></i> Setoran
                             </a>
-                            <a href="<?php echo base_url('transaksi/penarikan'); ?>" class="btn btn-danger btn-sm">
+                            <a href="<?php echo base_url('index.php/transaksi/penarikan'); ?>" class="btn btn-danger btn-sm">
                                 <i class="fas fa-arrow-up"></i> Penarikan
                             </a>
                         </div>
