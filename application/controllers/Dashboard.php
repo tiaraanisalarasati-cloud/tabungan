@@ -9,10 +9,10 @@ class Dashboard extends CI_Controller {
         $this->load->model('Dashboard_model');
         $this->load->helper('url');
         
-        // Uncomment jika sudah ada sistem login
-        // if (!$this->session->userdata('logged_in')) {
-        //     redirect('auth/login');
-        // }
+        // Cek session login
+        if (!$this->session->userdata('logged_in')) {
+            redirect('login');
+        }
     }
 
     public function index()

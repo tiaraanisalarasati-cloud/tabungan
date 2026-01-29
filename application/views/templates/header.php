@@ -185,6 +185,9 @@
             z-index: 999;
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .top-navbar h4 {

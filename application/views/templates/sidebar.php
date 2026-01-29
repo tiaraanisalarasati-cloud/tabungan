@@ -56,7 +56,7 @@
                 <hr>
                 
                 <li>
-                    <a href="<?php echo base_url('auth/logout'); ?>">
+                    <a href="<?php echo site_url('login/logout'); ?>">
                         <i class="fas fa-sign-out-alt"></i>
                         <span>Logout</span>
                     </a>
