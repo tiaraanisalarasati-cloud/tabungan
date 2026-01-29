@@ -170,10 +170,10 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h6 class="m-0 fw-bold"><i class="fas fa-filter"></i> Filter & Daftar Transaksi</h6>
                         <div>
-                            <a href="<?php echo base_url('index.php/transaksi/setoran'); ?>" class="btn btn-success btn-sm me-2">
+                            <a href="<?php echo site_url('transaksi/setoran'); ?>" class="btn btn-success btn-sm me-2">
                                 <i class="fas fa-arrow-down"></i> Setoran
                             </a>
-                            <a href="<?php echo base_url('index.php/transaksi/penarikan'); ?>" class="btn btn-danger btn-sm">
+                            <a href="<?php echo site_url('transaksi/penarikan'); ?>" class="btn btn-danger btn-sm">
                                 <i class="fas fa-arrow-up"></i> Penarikan
                             </a>
                         </div>
@@ -181,7 +181,7 @@
                     <div class="card-body">
                         
                         <!-- Filter Form -->
-                        <form action="<?php echo base_url('transaksi'); ?>" method="GET" id="filterForm">
+                        <form action="<?php echo site_url('transaksi'); ?>" method="GET" id="filterForm">
                             <div class="row mb-4">
                                 <div class="col-md-3">
                                     <label class="form-label">Jenis Transaksi</label>
@@ -217,7 +217,7 @@
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fas fa-search"></i> Cari
                                     </button>
-                                    <a href="<?php echo base_url('transaksi'); ?>" class="btn btn-secondary">
+                                    <a href="<?php echo site_url('transaksi'); ?>" class="btn btn-secondary">
                                         <i class="fas fa-sync"></i> Reset Filter
                                     </a>
                                     <button type="button" class="btn btn-info" onclick="window.print()">
@@ -287,12 +287,12 @@
                                                 </td>
                                                 <td class="text-center">
                                                     <div class="btn-group" role="group">
-                                                        <a href="<?php echo base_url('transaksi/detail/' . $t->id_transaksi); ?>" 
+                                                        <a href="<?php echo site_url('transaksi/detail/' . $t->id_transaksi); ?>" 
                                                            class="btn btn-info btn-sm" 
                                                            data-bs-toggle="tooltip" title="Detail">
                                                             <i class="fas fa-eye"></i>
                                                         </a>
-                                                        <a href="<?php echo base_url('transaksi/print_bukti/' . $t->id_transaksi); ?>" 
+                                                        <a href="<?php echo site_url('transaksi/print_bukti/' . $t->id_transaksi); ?>" 
                                                            class="btn btn-primary btn-sm" 
                                                            data-bs-toggle="tooltip" title="Print"
                                                            target="_blank">

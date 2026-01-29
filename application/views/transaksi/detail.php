@@ -5,10 +5,10 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <h4 class="mb-0"><i class="fas fa-receipt"></i> Detail Transaksi</h4>
                     <div>
-                        <a href="<?php echo base_url('transaksi'); ?>" class="btn btn-secondary btn-sm me-2">
+                        <a href="<?php echo site_url('transaksi'); ?>" class="btn btn-secondary btn-sm me-2">
                             <i class="fas fa-arrow-left"></i> Kembali
                         </a>
-                        <a href="<?php echo base_url('transaksi/print_bukti/' . $transaksi->id_transaksi); ?>" 
+                        <a href="<?php echo site_url('transaksi/print_bukti/' . $transaksi->id_transaksi); ?>" 
                            class="btn btn-primary btn-sm" target="_blank">
                             <i class="fas fa-print"></i> Print Bukti
                         </a>
@@ -166,11 +166,11 @@
 
                                 <!-- Actions -->
                                 <div class="d-flex justify-content-between">
-                                    <a href="<?php echo base_url('nasabah/detail/' . $transaksi->id_nasabah); ?>" 
+                                    <a href="<?php echo site_url('nasabah/detail/' . $transaksi->id_nasabah); ?>" 
                                        class="btn btn-info">
                                         <i class="fas fa-user"></i> Lihat Profil Nasabah
                                     </a>
-                                    <a href="<?php echo base_url('transaksi/print_bukti/' . $transaksi->id_transaksi); ?>" 
+                                    <a href="<?php echo site_url('transaksi/print_bukti/' . $transaksi->id_transaksi); ?>" 
                                        class="btn btn-primary" target="_blank">
                                         <i class="fas fa-print"></i> Print Bukti
                                     </a>
