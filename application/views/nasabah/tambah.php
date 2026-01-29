@@ -32,7 +32,7 @@
                                 <h6 class="m-0 fw-bold"><i class="fas fa-edit"></i> Form Tambah Nasabah Baru</h6>
                             </div>
                             <div class="card-body">
-                                <form action="<?php echo base_url('nasabah/tambah_aksi'); ?>" method="POST" id="formTambah">
+                                <?php echo form_open('nasabah/tambah_aksi', ['id' => 'formTambah']); ?>
                                     
                                     <div class="row">
                                         <!-- Kolom Kiri -->
@@ -52,6 +52,7 @@
                                                     </button>
                                                 </div>
                                                 <small class="text-muted">Klik Generate untuk membuat nomor rekening otomatis</small>
+                                                <?php echo form_error('no_rekening', '<div class="text-danger">', '</div>'); ?>
                                             </div>
 
                                             <!-- Nama Nasabah -->
@@ -63,6 +64,7 @@
                                                        name="nama_nasabah" required
                                                        placeholder="Masukkan nama lengkap"
                                                        value="<?php echo set_value('nama_nasabah'); ?>">
+                                                <?php echo form_error('nama_nasabah', '<div class="text-danger">', '</div>'); ?>
                                             </div>
 
                                             <!-- Jenis Kelamin -->
@@ -75,6 +77,7 @@
                                                     <option value="L" <?php echo set_select('jenis_kelamin', 'L'); ?>>Laki-laki</option>
                                                     <option value="P" <?php echo set_select('jenis_kelamin', 'P'); ?>>Perempuan</option>
                                                 </select>
+                                                <?php echo form_error('jenis_kelamin', '<div class="text-danger">', '</div>'); ?>
                                             </div>
 
                                             <!-- Tanggal Lahir -->
@@ -85,6 +88,7 @@
                                                 <input type="date" class="form-control" id="tanggal_lahir" 
                                                        name="tanggal_lahir" required
                                                        value="<?php echo set_value('tanggal_lahir'); ?>">
+                                                <?php echo form_error('tanggal_lahir', '<div class="text-danger">', '</div>'); ?>
                                             </div>
 
                                             <!-- Pekerjaan -->
@@ -104,11 +108,11 @@
                                             <!-- Alamat -->
                                             <div class="mb-3">
                                                 <label for="alamat" class="form-label">
-                                                    Alamat Lengkap <span class="text-danger">*</span>
+                                                    Alamat <span class="text-danger">*</span>
                                                 </label>
-                                                <textarea class="form-control" id="alamat" name="alamat" 
-                                                          rows="3" required
-                                                          placeholder="Masukkan alamat lengkap"><?php echo set_value('alamat'); ?></textarea>
+                                                <textarea class="form-control" id="alamat" name="alamat" rows="2" 
+                                                          required><?php echo set_value('alamat'); ?></textarea>
+                                                <?php echo form_error('alamat', '<div class="text-danger">', '</div>'); ?>
                                             </div>
 
                                             <!-- No. Telepon -->
@@ -116,10 +120,11 @@
                                                 <label for="no_telepon" class="form-label">
                                                     No. Telepon <span class="text-danger">*</span>
                                                 </label>
-                                                <input type="text" class="form-control number-only" 
-                                                       id="no_telepon" name="no_telepon" required
+                                                <input type="text" class="form-control" id="no_telepon" 
+                                                       name="no_telepon" required
                                                        placeholder="Contoh: 081234567890"
                                                        value="<?php echo set_value('no_telepon'); ?>">
+                                                <?php echo form_error('no_telepon', '<div class="text-danger">', '</div>'); ?>
                                             </div>
 
                                             <!-- Email -->
@@ -140,9 +145,9 @@
                                                     <span class="input-group-text">Rp</span>
                                                     <input type="number" class="form-control" id="saldo" 
                                                            name="saldo" required min="0" step="1000"
-                                                           placeholder="0"
                                                            value="<?php echo set_value('saldo', '0'); ?>">
                                                 </div>
+                                                <?php echo form_error('saldo', '<div class="text-danger">', '</div>'); ?>
                                                 <small class="text-muted">Minimal Rp 0 (dapat diisi 0 jika belum ada setoran)</small>
                                             </div>
 
@@ -161,7 +166,7 @@
                                         </button>
                                     </div>
 
-                                </form>
+                                <?php echo form_close(); ?>
                             </div>
                         </div>
 
@@ -187,38 +192,52 @@
 
         <!-- Additional JavaScript -->
         <script>
-            // Generate Nomor Rekening
-            document.getElementById('btnGenerate').addEventListener('click', function() {
-                showLoading();
-                
-                fetch('<?php echo base_url('nasabah/generate_no_rekening'); ?>')
-                    .then(response => response.json())
-                    .then(data => {
-                        document.getElementById('no_rekening').value = data.no_rekening;
-                        hideLoading();
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        hideLoading();
-                        alert('Gagal generate nomor rekening');
-                    });
-            });
-
-            // Auto generate saat halaman load
-            window.addEventListener('load', function() {
+            document.addEventListener('DOMContentLoaded', function() {
+                // Generate nomor rekening saat halaman dimuat
                 if (document.getElementById('no_rekening').value === '') {
-                    document.getElementById('btnGenerate').click();
+                    generateNoRekening();
                 }
-            });
-
-            // Validasi form sebelum submit
-            document.getElementById('formTambah').addEventListener('submit', function(e) {
-                var noRek = document.getElementById('no_rekening').value;
                 
-                if (noRek === '') {
+                // Event listener untuk tombol generate
+                document.getElementById('btnGenerate').addEventListener('click', function(e) {
                     e.preventDefault();
-                    alert('Nomor rekening belum di-generate!');
-                    return false;
+                    generateNoRekening();
+                });
+                
+                // Fungsi untuk generate nomor rekening
+                function generateNoRekening() {
+                    // Format: TAHUNBULANTANGGAL + 4 digit random
+                    const now = new Date();
+                    const year = now.getFullYear().toString().substr(-2);
+                    const month = String(now.getMonth() + 1).padStart(2, '0');
+                    const day = String(now.getDate()).padStart(2, '0');
+                    const random = Math.floor(1000 + Math.random() * 9000);
+                    
+                    const noRekening = 'TAB' + year + month + day + random;
+                    document.getElementById('no_rekening').value = noRekening;
                 }
+
+                // Validasi form sebelum submit
+                document.getElementById('formTambah').addEventListener('submit', function(e) {
+                    const noRek = document.getElementById('no_rekening').value;
+                    const saldo = document.getElementById('saldo').value;
+                    
+                    if (noRek === '') {
+                        e.preventDefault();
+                        alert('Silakan generate nomor rekening terlebih dahulu!');
+                        return false;
+                    }
+                    
+                    if (parseFloat(saldo) < 0) {
+                        e.preventDefault();
+                        alert('Saldo tidak boleh kurang dari 0');
+                        return false;
+                    }
+                    
+                    // Tampilkan loading
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+                });
             });
         </script>
