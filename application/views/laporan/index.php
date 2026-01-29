@@ -210,6 +210,25 @@
                                         </div>
                                     </div>
 
+                                    <!-- Shortcut Transaksi Setoran -->
+                                    <div class="col-md-4 mb-3">
+                                        <div class="card h-100 border-success">
+                                            <div class="card-body text-center">
+                                                <div class="mb-3">
+                                                    <i class="fas fa-arrow-down fa-4x text-success"></i>
+                                                </div>
+                                                <h5 class="card-title">Transaksi Setoran</h5>
+                                                <p class="card-text text-muted">
+                                                    Buka langsung form transaksi setoran tabungan
+                                                </p>
+                                                <a href="<?php echo base_url('transaksi/setoran'); ?>" 
+                                                   class="btn btn-success">
+                                                    <i class="fas fa-arrow-down"></i> Buka Form Setoran
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

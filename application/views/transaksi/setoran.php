@@ -3,7 +3,7 @@
             <!-- Top Navbar -->
             <nav class="top-navbar">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h4 class="mb-0"><i class="fas fa-arrow-up"></i> Transaksi Penarikan</h4>
+                    <h4 class="mb-0"><i class="fas fa-arrow-down"></i> Transaksi Setoran</h4>
                     <div>
                         <a href="<?php echo base_url('transaksi'); ?>" class="btn btn-secondary btn-sm">
                             <i class="fas fa-arrow-left"></i> Kembali
@@ -28,13 +28,13 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="card">
-                            <div class="card-header text-white" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);">
+                            <div class="card-header bg-success text-white">
                                 <h6 class="m-0 fw-bold">
-                                    <i class="fas fa-hand-holding-usd"></i> Form Penarikan Tabungan
+                                    <i class="fas fa-money-bill-wave"></i> Form Setoran Tabungan
                                 </h6>
                             </div>
                             <div class="card-body">
-                                <form action="<?php echo base_url('transaksi/penarikan_aksi'); ?>" method="POST" id="formPenarikan">
+                                <form action="<?php echo base_url('transaksi/setoran_aksi'); ?>" method="POST" id="formSetoran">
                                     
                                     <!-- Pilih Nasabah -->
                                     <div class="mb-3">
@@ -65,7 +65,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <strong>Saldo Saat Ini:</strong><br>
-                                                    <h4 class="text-primary mb-0">
+                                                    <h4 class="text-success mb-0">
                                                         Rp <span id="displaySaldo">0</span>
                                                     </h4>
                                                 </div>
@@ -73,10 +73,10 @@
                                         </div>
                                     </div>
 
-                                    <!-- Jumlah Penarikan -->
+                                    <!-- Jumlah Setoran -->
                                     <div class="mb-3">
                                         <label for="jumlah" class="form-label">
-                                            Jumlah Penarikan <span class="text-danger">*</span>
+                                            Jumlah Setoran <span class="text-danger">*</span>
                                         </label>
                                         <div class="input-group input-group-lg">
                                             <span class="input-group-text">Rp</span>
@@ -84,28 +84,23 @@
                                                    name="jumlah" required min="1000" step="1000"
                                                    placeholder="0">
                                         </div>
-                                        <small class="text-muted">Minimal penarikan Rp 1.000</small>
+                                        <small class="text-muted">Minimal setoran Rp 1.000</small>
                                     </div>
 
                                     <!-- Preview Saldo Baru -->
                                     <div id="previewSaldo" class="mb-3" style="display: none;">
-                                        <div class="alert" id="alertPreview">
+                                        <div class="alert alert-success">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <strong>Saldo Saat Ini:</strong><br>
                                                     <span class="h5">Rp <span id="saldoSekarang">0</span></span>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <strong>Saldo Setelah Penarikan:</strong><br>
-                                                    <span class="h5" id="saldoBaruText">
+                                                    <strong>Saldo Setelah Setoran:</strong><br>
+                                                    <span class="h5 text-success">
                                                         Rp <span id="saldoBaru">0</span>
                                                     </span>
                                                 </div>
-                                            </div>
-                                            <div id="warningNotif" style="display: none;" class="mt-3">
-                                                <hr>
-                                                <i class="fas fa-exclamation-triangle"></i> 
-                                                <strong>Peringatan:</strong> <span id="warningText"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -124,8 +119,8 @@
                                         <a href="<?php echo base_url('transaksi'); ?>" class="btn btn-secondary">
                                             <i class="fas fa-times"></i> Batal
                                         </a>
-                                        <button type="submit" class="btn btn-danger btn-lg" id="btnSubmit">
-                                            <i class="fas fa-check"></i> Proses Penarikan
+                                        <button type="submit" class="btn btn-success btn-lg">
+                                            <i class="fas fa-check"></i> Proses Setoran
                                         </button>
                                     </div>
 
@@ -136,15 +131,14 @@
                         <!-- Info Card -->
                         <div class="card">
                             <div class="card-body">
-                                <h6 class="fw-bold text-danger mb-3">
-                                    <i class="fas fa-exclamation-triangle"></i> Perhatian Penarikan
+                                <h6 class="fw-bold text-success mb-3">
+                                    <i class="fas fa-info-circle"></i> Informasi Setoran
                                 </h6>
                                 <ul class="mb-0">
                                     <li>Pilih nasabah terlebih dahulu untuk melihat saldo</li>
-                                    <li>Minimal penarikan adalah Rp 1.000</li>
-                                    <li>Pastikan saldo nasabah mencukupi untuk penarikan</li>
-                                    <li>Jumlah penarikan tidak boleh melebihi saldo yang tersedia</li>
-                                    <li>Saldo akan otomatis berkurang setelah transaksi berhasil</li>
+                                    <li>Minimal setoran adalah Rp 1.000</li>
+                                    <li>Pastikan jumlah setoran sudah benar sebelum diproses</li>
+                                    <li>Saldo akan otomatis bertambah setelah transaksi berhasil</li>
                                     <li>Transaksi akan tercatat dalam riwayat nasabah</li>
                                 </ul>
                             </div>
@@ -191,38 +185,13 @@
             // Function update preview
             function updatePreview() {
                 const jumlah = parseFloat(document.getElementById('jumlah').value) || 0;
-                const alertPreview = document.getElementById('alertPreview');
-                const warningNotif = document.getElementById('warningNotif');
-                const warningText = document.getElementById('warningText');
-                const btnSubmit = document.getElementById('btnSubmit');
-                const saldoBaruText = document.getElementById('saldoBaruText');
                 
                 if (saldoSekarang > 0 && jumlah > 0) {
-                    const saldoBaru = saldoSekarang - jumlah;
+                    const saldoBaru = saldoSekarang + jumlah;
                     
                     document.getElementById('saldoSekarang').textContent = formatRupiah(saldoSekarang);
                     document.getElementById('saldoBaru').textContent = formatRupiah(saldoBaru);
                     document.getElementById('previewSaldo').style.display = 'block';
-                    
-                    // Cek saldo mencukupi
-                    if (saldoBaru < 0) {
-                        alertPreview.className = 'alert alert-danger';
-                        saldoBaruText.className = 'h5 text-danger';
-                        warningNotif.style.display = 'block';
-                        warningText.textContent = 'Saldo tidak mencukupi! Penarikan melebihi saldo yang tersedia.';
-                        btnSubmit.disabled = true;
-                    } else if (saldoBaru < 10000) {
-                        alertPreview.className = 'alert alert-warning';
-                        saldoBaruText.className = 'h5 text-warning';
-                        warningNotif.style.display = 'block';
-                        warningText.textContent = 'Saldo setelah penarikan kurang dari Rp 10.000';
-                        btnSubmit.disabled = false;
-                    } else {
-                        alertPreview.className = 'alert alert-success';
-                        saldoBaruText.className = 'h5 text-success';
-                        warningNotif.style.display = 'none';
-                        btnSubmit.disabled = false;
-                    }
                 } else {
                     document.getElementById('previewSaldo').style.display = 'none';
                 }
@@ -242,7 +211,7 @@
             });
 
             // Validasi sebelum submit
-            document.getElementById('formPenarikan').addEventListener('submit', function(e) {
+            document.getElementById('formSetoran').addEventListener('submit', function(e) {
                 const idNasabah = document.getElementById('id_nasabah').value;
                 const jumlah = parseFloat(document.getElementById('jumlah').value) || 0;
                 
@@ -254,17 +223,11 @@
                 
                 if (jumlah < 1000) {
                     e.preventDefault();
-                    alert('Jumlah penarikan minimal Rp 1.000!');
+                    alert('Jumlah setoran minimal Rp 1.000!');
                     return false;
                 }
                 
-                if (jumlah > saldoSekarang) {
-                    e.preventDefault();
-                    alert('Saldo tidak mencukupi! Saldo saat ini: Rp ' + formatRupiah(saldoSekarang));
-                    return false;
-                }
-                
-                if (!confirm('Apakah Anda yakin ingin memproses penarikan sebesar Rp ' + formatRupiah(jumlah) + '?')) {
+                if (!confirm('Apakah Anda yakin ingin memproses setoran sebesar Rp ' + formatRupiah(jumlah) + '?')) {
                     e.preventDefault();
                     return false;
                 }
