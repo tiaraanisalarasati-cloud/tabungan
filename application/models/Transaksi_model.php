@@ -174,7 +174,7 @@ class Transaksi_model extends CI_Model {
         if ($tgl_dari) $this->db->where('DATE(tanggal) >=', $tgl_dari);
         if ($tgl_sampai) $this->db->where('DATE(tanggal) <=', $tgl_sampai);
         $query = $this->db->get($this->table);
-        $statistik['total_setoran'] = $query->row()->jumlah ?? 0;
+        $statistik['total_setoran'] = ($query->row() !== null) ? $query->row()->jumlah : 0;
         
         // Total penarikan
         $this->db->select_sum('jumlah');
@@ -182,7 +182,7 @@ class Transaksi_model extends CI_Model {
         if ($tgl_dari) $this->db->where('DATE(tanggal) >=', $tgl_dari);
         if ($tgl_sampai) $this->db->where('DATE(tanggal) <=', $tgl_sampai);
         $query = $this->db->get($this->table);
-        $statistik['total_penarikan'] = $query->row()->jumlah ?? 0;
+        $statistik['total_penarikan'] = ($query->row() !== null) ? $query->row()->jumlah : 0;
         
         // Jumlah transaksi
         $this->db->where('jenis_transaksi', 'setoran');
