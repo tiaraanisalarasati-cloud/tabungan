@@ -121,7 +121,7 @@ class Nasabah extends CI_Controller {
                     'jumlah' => $data['saldo'],
                     'keterangan' => 'Saldo awal pembukaan rekening',
                     'tanggal' => date('Y-m-d H:i:s'),
-                    'id_petugas' => $this->session->userdata('user_id') ?? 1 // Ganti dengan session user yang login
+                    'id_petugas' => ($this->session->userdata('user_id') !== null) ? $this->session->userdata('user_id') : 1 // Ganti dengan session user yang login
                 ];
                 $this->db->insert('transaksi', $transaksi);
             }
