@@ -32,7 +32,7 @@
                                 <h6 class="m-0 fw-bold"><i class="fas fa-edit"></i> Form Edit Data Nasabah</h6>
                             </div>
                             <div class="card-body">
-                                <form action="<?php echo base_url('nasabah/edit_aksi'); ?>" method="POST" id="formEdit">
+                                <form action="<?php echo site_url('nasabah/edit_aksi'); ?>" method="POST" id="formEdit">
                                     
                                     <input type="hidden" name="id_nasabah" value="<?php echo $nasabah->id_nasabah; ?>">
                                     
