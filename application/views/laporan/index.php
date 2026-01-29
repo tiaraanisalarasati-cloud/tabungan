@@ -196,7 +196,7 @@
                                         <div class="card h-100 border-info">
                                             <div class="card-body text-center">
                                                 <div class="mb-3">
-                                                    <i class="fas fa-user-chart fa-4x text-info"></i>
+                                                    <i class="fas fa-file-alt fa-4x text-info"></i>
                                                 </div>
                                                 <h5 class="card-title">Laporan Transaksi Per Nasabah</h5>
                                                 <p class="card-text text-muted">
