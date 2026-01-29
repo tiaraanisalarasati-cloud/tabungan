@@ -159,43 +159,4 @@
                         </div>
                     </div>
 
-                <!-- Quick Actions -->
-                <div class="row mt-4">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 fw-bold"><i class="fas fa-bolt"></i> Quick Actions</h6>
-                            </div>
-                            <div class="card-body">
-                                <div class="row g-3 text-center">
-                                    <div class="col-xl-3 col-md-6">
-                                        <a href="<?php echo base_url('nasabah/tambah'); ?>" class="btn btn-primary btn-lg w-100 h-100 py-3 d-flex flex-column align-items-center justify-content-center">
-                                            <i class="fas fa-user-plus fa-2x mb-2"></i>
-                                            <span>Tambah Nasabah</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-xl-3 col-md-6">
-                                        <a href="<?php echo base_url('index.php/transaksi/setoran'); ?>" class="btn btn-success btn-lg w-100 h-100 py-3 d-flex flex-column align-items-center justify-content-center">
-                                            <i class="fas fa-arrow-down fa-2x mb-2"></i>
-                                            <span>Setoran</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-xl-3 col-md-6">
-                                        <a href="<?php echo base_url('index.php/transaksi/penarikan'); ?>" class="btn btn-danger btn-lg w-100 h-100 py-3 d-flex flex-column align-items-center justify-content-center">
-                                            <i class="fas fa-arrow-up fa-2x mb-2"></i>
-                                            <span>Penarikan</span>
-                                        </a>
-                                    </div>
-                                    <div class="col-xl-3 col-md-6">
-                                        <a href="<?php echo base_url('laporan'); ?>" class="btn btn-info btn-lg w-100 h-100 py-3 d-flex flex-column align-items-center justify-content-center">
-                                            <i class="fas fa-file-pdf fa-2x mb-2"></i>
-                                            <span>Cetak Laporan</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+               
